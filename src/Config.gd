@@ -1,4 +1,4 @@
-extends Node
+class_name Config
 
 const SQUARE_WIDTH = 24
 const SQUARE_BORDER_WIDTH = 3

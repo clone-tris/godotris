@@ -1,4 +1,4 @@
-extends Node
+class_name Colors
 
 const TETROMINO_CYAN = Color("#00F0F0FF")
 const TETROMINO_YELLOW = Color("#F0F000FF")
