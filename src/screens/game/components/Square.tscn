@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://df1tqr6l3e88k"]
-
-[ext_resource type="Script" uid="uid://cfgj1dkecafir" path="res://src/screens/game/components/Square.gd" id="1_a8kq2"]
-
-[node name="Polygon2D" type="Polygon2D" unique_id=721616405]
-polygon = PackedVector2Array(0, 0, 24, 0, 24, 24, 0, 24)
-uv = PackedVector2Array(0, 0, 24, 0, 24, 24, 0, 24)
-script = ExtResource("1_a8kq2")
