@@ -1,11 +1,9 @@
 class_name Square
 
-const SW = Config.SQUARE_WIDTH
-const BW = Config.SQUARE_BORDER_WIDTH
-const IW = SW - (BW * 2)
+var cell: Vector2i
+var color: Color
 
-static func create(cell: Vector2i, color: Color) -> Square:
-  var square := Square.new()
-  square.position = Vector2(cell.x * SW, cell.y * SW)
-  square.color = color
-  return square
+
+func _init(p_cell: Vector2i, p_color: Color) -> void:
+  cell = p_cell
+  color = p_color

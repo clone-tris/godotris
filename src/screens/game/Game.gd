@@ -1,17 +1,13 @@
 extends Node2D
 
-
-func _ready() -> void:
-  # var squares = [
-  # 	Square.create(Vector2i(0, 0), Colors.TETROMINO_CYAN),
-  # 	Square.create(Vector2i(1, 0), Colors.TETROMINO_CYAN),
-  # 	Square.create(Vector2i(2, 0), Colors.TETROMINO_CYAN),
-  # 	Square.create(Vector2i(3, 0), Colors.TETROMINO_CYAN),
-  # ]
-
-  # for s in squares:
-  # 	add_child(s)
-  pass
-
 func _draw() -> void:
-  Painter.drawGuide(self, Rect2(Vector2(Config.SIDEBAR_WIDTH, 0), Vector2(Config.WAR_ZONE_WIDTH, Config.CANVAS_HEIGHT)))
+  const playfieldOrigin = Vector2(Config.SIDEBAR_WIDTH, 0)
+  const SW = Config.SQUARE_WIDTH
+  
+  Painter.drawGuide(self, Rect2(playfieldOrigin, Vector2(Config.WAR_ZONE_WIDTH, Config.CANVAS_HEIGHT)))
+  
+  Painter.drawSquareAtPosition(self, playfieldOrigin + Vector2(2 * SW, 2 * SW), Colors.TETROMINO_GREEN)
+  Painter.drawSquareAtPosition(self, playfieldOrigin + Vector2(2 * SW, 3 * SW), Colors.TETROMINO_PURPLE)
+  Painter.drawSquareAtPosition(self, playfieldOrigin + Vector2(3 * SW, 2 * SW), Colors.TETROMINO_RED)
+  Painter.drawSquareAtPosition(self, playfieldOrigin + Vector2(3 * SW, 1 * SW), Colors.TETROMINO_YELLOW)
+    
