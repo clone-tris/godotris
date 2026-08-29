@@ -1,8 +1,8 @@
 extends Polygon2D
 
-var SW = Config.SQUARE_WIDTH
-var BW = Config.SQUARE_BORDER_WIDTH
-var IW = SW - (BW * 2)
+static var SW = Config.SQUARE_WIDTH
+static var BW = Config.SQUARE_BORDER_WIDTH
+static var IW = SW - (BW * 2)
 
 func _draw():
 	#draw_rect(Rect2(0, 0, Config.SQUARE_WIDTH, Config.SQUARE_WIDTH), color)
