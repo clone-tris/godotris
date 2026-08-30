@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="hello"
+config/name="Godotris"
 run/main_scene="uid://cfa51sh6bqqyv"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
