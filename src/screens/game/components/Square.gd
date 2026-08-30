@@ -1,6 +1,13 @@
 class_name Square
 
 var cell: Vector2i
+
+var row: int:
+      get: return cell.y
+
+var column: int:
+      get: return cell.x
+
 var color: Color
 
 
