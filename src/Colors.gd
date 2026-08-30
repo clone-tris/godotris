@@ -9,9 +9,9 @@ const TETROMINO_GREEN = Color("#00F000FF")
 const TETROMINO_RED = Color("#F00000FF")
 
 const SQUARE_DEFAULT_COLOR = Color("#cc8081FF")
-const SQUARE_BORDER_TOP = Color("#FFFFFF99")  # White at 61% Opacity
-const SQUARE_BORDER_BOTTOM = Color("#00000080")  # Black at 50% Opacity
-const SQUARE_BORDER_SIDE = Color("#0000001A")  # Black at 10% Opacity
+const SQUARE_BORDER_TOP = Color("#FFFFFF99") # White at 61% Opacity
+const SQUARE_BORDER_BOTTOM = Color("#00000080") # Black at 50% Opacity
+const SQUARE_BORDER_SIDE = Color("#0000001A") # Black at 10% Opacity
 
 const UI_BACKGROUND = Color("#333333FF")
 const UI_SIDEBAR_BACKGROUND = Color("#545454FF")
