@@ -1,12 +1,18 @@
 class_name Shape
 
 var cell: Vector2i
+
 var row: int:
   get:
-    return cell.x
+    return cell.y
+  set(value):
+    cell.y = value
+
 var column: int:
   get:
-    return cell.y
+    return cell.x
+  set(value):
+    cell.x = value
 
 var width: int = 0
 var height: int = 0
@@ -14,8 +20,8 @@ var height: int = 0
 var squares: Array[Square] = []
 
 
-func _init(_cell: Vector2i, _squares: Array[Square]) -> void:
-  cell = _cell
+func _init(_row: int, _column: int, _squares: Array[Square]) -> void:
+  cell = Vector2i(_column, _row)
   squares = _squares
   computeSize()
 

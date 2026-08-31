@@ -20,14 +20,13 @@ static func drawGuide(canvas: CanvasItem, rect: Rect2) -> void:
     canvas.draw_line(Vector2(lineX, rect.position.y), Vector2(lineX, rect.end.y), Colors.UI_GUIDE)
 
 
-static func drawShape(canvas: CanvasItem, shape: Shape, ref: Vector2i) -> void:
-  var shapeRef = ref + Vector2i(shape.cell.y, shape.cell.x) * SW
-  drawSquares(canvas, shape.squares, shapeRef)
+static func drawShape(canvas: CanvasItem, shape: Shape, origin: Vector2i) -> void:
+  drawSquares(canvas, shape.squares, origin + shape.cell * SW)
 
 
-static func drawSquares(canvas: CanvasItem, squares: Array[Square], ref: Vector2i) -> void:
+static func drawSquares(canvas: CanvasItem, squares: Array[Square], origin: Vector2i) -> void:
   for square in squares:
-    drawSquare(canvas, ref + Vector2i(square.cell.y, square.cell.x) * SW, square.color)
+    drawSquare(canvas, origin + square.cell * SW, square.color)
 
 
 static func drawSquare(canvas: CanvasItem, position: Vector2, color: Color) -> void:
