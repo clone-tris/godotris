@@ -44,3 +44,15 @@ func computeSize() -> void:
 
   height = maxRow - minRow + 1
   width = maxColumn - minColumn + 1
+
+
+func copy() -> Shape:
+  var newSquares: Array[Square] = []
+  for square in squares:
+    newSquares.append(square.copy())
+
+  return Shape.new(row, column, newSquares)
+
+
+func translate(direction: Vector2i):
+  cell += direction

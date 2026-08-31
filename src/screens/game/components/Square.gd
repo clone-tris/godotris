@@ -20,3 +20,7 @@ var color: Color
 func _init(_row: int, _column: int, _color: Color) -> void:
   cell = Vector2i(_column, _row)
   color = _color
+
+
+func copy() -> Square:
+  return Square.new(row, column, color)

@@ -30,3 +30,31 @@ func _draw() -> void:
 
   Painter.drawShape(self, player, playfieldOrigin)
   Painter.drawSquares(self, opponent, playfieldOrigin)
+
+
+func _input(event: InputEvent) -> void:
+  if event.is_action_pressed("Rotate", true):
+    movePlayer(Vector2i(0, -1))
+  if event.is_action_pressed("MoveLeft", true):
+    movePlayerLeft()
+  if event.is_action_pressed("MoveRight", true):
+    movePlayerRight()
+  if event.is_action_pressed("MoveDown", true):
+    movePlayerDown()
+
+
+func movePlayerLeft() -> void:
+  movePlayer(Vector2i(-1, 0))
+
+
+func movePlayerRight() -> void:
+  movePlayer(Vector2i(1, 0))
+
+
+func movePlayerDown() -> void:
+  movePlayer(Vector2i(0, 1))
+
+
+func movePlayer(direction: Vector2i):
+  player.translate(direction)
+  queue_redraw()
