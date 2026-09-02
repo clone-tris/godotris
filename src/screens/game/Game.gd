@@ -34,13 +34,23 @@ func _draw() -> void:
 
 func _input(event: InputEvent) -> void:
   if event.is_action_pressed("Rotate", true):
-    movePlayer(Vector2i(0, -1))
+    rotatePlayer()
   if event.is_action_pressed("MoveLeft", true):
     movePlayerLeft()
   if event.is_action_pressed("MoveRight", true):
     movePlayerRight()
   if event.is_action_pressed("MoveDown", true):
     movePlayerDown()
+
+
+func rotatePlayer() -> void:
+  var foreshadow := player.copy()
+  foreshadow.rotate()
+
+  var ableToMove := isLegalShapePosition(foreshadow)
+  if (ableToMove):
+    player = foreshadow
+    queue_redraw()
 
 
 func movePlayerLeft() -> void:
@@ -51,8 +61,8 @@ func movePlayerRight() -> void:
   movePlayer(Vector2i(1, 0))
 
 
-func movePlayerDown() -> void:
-  movePlayer(Vector2i(0, 1))
+func movePlayerDown() -> bool:
+  return movePlayer(Vector2i(0, 1))
 
 
 func movePlayer(direction: Vector2i) -> bool:
