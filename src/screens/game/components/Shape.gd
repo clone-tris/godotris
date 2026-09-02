@@ -56,3 +56,10 @@ func copy() -> Shape:
 
 func translate(direction: Vector2i):
   cell += direction
+
+
+func withinBounds() -> bool:
+  return (
+    cell.x >= 0 and (cell.x + width) <= Config.PUZZLE_WIDTH
+    and (cell.y + height) <= Config.PUZZLE_HEIGHT
+  )
