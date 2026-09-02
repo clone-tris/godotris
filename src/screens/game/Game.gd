@@ -55,6 +55,10 @@ func movePlayerDown() -> void:
   movePlayer(Vector2i(0, 1))
 
 
-func movePlayer(direction: Vector2i):
+func movePlayer(direction: Vector2i) -> void:
   player.translate(direction)
   queue_redraw()
+
+
+func isLegalShapePosition(shape: Shape) -> bool:
+  return shape.withinBounds() and not shape.overlapsSquares(opponent)
