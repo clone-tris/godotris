@@ -58,6 +58,16 @@ func translate(direction: Vector2i):
   cell += direction
 
 
+func rotate() -> void:
+  var newSquares: Array[Square] = []
+
+  for square in squares:
+    newSquares.append(Square.new(square.column, height - square.row - 1, square.color))
+
+  squares = newSquares
+  computeSize()
+
+
 func overlapsSquares(otherSquares: Array[Square]) -> bool:
   for square in squares:
     var absolute := square.cell + cell
