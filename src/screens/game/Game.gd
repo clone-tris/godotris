@@ -4,7 +4,7 @@ const SW = Config.SQUARE_WIDTH
 const playfieldOrigin = Vector2i(Config.SIDEBAR_WIDTH, 0)
 
 var player = Shape.new(
-  18,
+  0,
   0,
   [
     Square.new(0, 0, Colors.TETROMINO_RED),
@@ -55,9 +55,16 @@ func movePlayerDown() -> void:
   movePlayer(Vector2i(0, 1))
 
 
-func movePlayer(direction: Vector2i) -> void:
-  player.translate(direction)
-  queue_redraw()
+func movePlayer(direction: Vector2i) -> bool:
+  var foreshadow := player.copy()
+  foreshadow.translate(direction)
+
+  var ableToMove := isLegalShapePosition(foreshadow)
+  if (ableToMove):
+    player = foreshadow
+    queue_redraw()
+
+  return ableToMove
 
 
 func isLegalShapePosition(shape: Shape) -> bool:
