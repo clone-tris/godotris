@@ -54,7 +54,7 @@ func copy() -> Shape:
   return Shape.new(row, column, newSquares)
 
 
-func translate(direction: Vector2i):
+func translate(direction: Vector2i) -> void:
   cell += direction
 
 
