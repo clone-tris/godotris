@@ -77,5 +77,12 @@ func movePlayer(direction: Vector2i) -> bool:
   return ableToMove
 
 
+func eatPlayer() -> void:
+  for square: Square in player.squares:
+    var newSquare := square.copy()
+    newSquare.cell += player.cell
+    opponent.append(newSquare)
+
+
 func isLegalShapePosition(shape: Shape) -> bool:
   return shape.withinBounds() and not shape.overlapsSquares(opponent)
