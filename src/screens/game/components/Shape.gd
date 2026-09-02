@@ -58,6 +58,16 @@ func translate(direction: Vector2i):
   cell += direction
 
 
+func overlapsSquares(otherSquares: Array[Square]) -> bool:
+  for square in squares:
+    var absolute := square.cell + cell
+    for otherSquare in otherSquares:
+      if absolute == otherSquare.cell:
+        return true
+
+  return false
+
+
 func withinBounds() -> bool:
   return (
     cell.x >= 0 and (cell.x + width) <= Config.PUZZLE_WIDTH
