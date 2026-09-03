@@ -68,8 +68,7 @@ func _process(_delta: float) -> void:
         return
       Command.RESTART:
         clearQueue()
-        # TODO Restart
-        print("Restart...")
+        get_tree().reload_current_scene()
         return
       Command.PAUSE:
         clearQueue()
