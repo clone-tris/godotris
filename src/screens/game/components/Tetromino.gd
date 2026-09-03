@@ -34,9 +34,9 @@ const COLORS: Array[Color] = [
 static func makeSquares(type: Type) -> Array[Square]:
   var squares: Array[Square] = []
   var shapeColor := COLORS[type]
-  var grid: Array[Array] = GRIDS[type]
+  var grid := GRIDS[type]
 
-  for coords: Array[int] in grid:
+  for coords in grid:
     squares.append(Square.new(coords[0], coords[1], shapeColor))
 
   return squares
