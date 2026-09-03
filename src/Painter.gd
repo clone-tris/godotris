@@ -1,4 +1,5 @@
 class_name Painter
+const FONT: Font = preload("res://jetbrainsmono.ttf")
 
 const SW = Config.SQUARE_WIDTH
 const BW = Config.SQUARE_BORDER_WIDTH
