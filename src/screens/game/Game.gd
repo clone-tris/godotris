@@ -82,9 +82,10 @@ func _process(_delta: float) -> void:
       Command.MOVE_RIGHT:
         movePlayerRight()
       Command.MOVE_DOWN:
-        movePlayerDown()
+        makePlayerFallNow()
 
   clearQueue()
+  applyGravity()
   queue_redraw()
 
 
@@ -123,7 +124,68 @@ func _input(event: InputEvent) -> void:
 
 
 func applyGravity() -> void:
-  pass
+  match state:
+    State.ON_FLOOR:
+      mopTheFloor()
+    State.PLAYING:
+      makePlayerFall()
+
+
+func makePlayerFall() -> void:
+  var now := Time.get_ticks_msec()
+  if now < nextFall or isPlayerFalling:
+    return
+
+  isPlayerFalling = true
+
+  var ableToMove := movePlayerDown()
+
+  if ableToMove:
+    state = State.PLAYING
+    nextFall = now + fallRate
+  else:
+    state = State.ON_FLOOR
+    endOfLock = now + Config.FLOOR_LOCK_RATE
+    nextFall = endOfLock
+
+  isPlayerFalling = false
+
+
+func makePlayerFallNow() -> void:
+  if state != State.PLAYING:
+    return
+
+  nextFall = 0
+  score.total += 1
+  makePlayerFall()
+
+
+func mopTheFloor() -> void:
+  var now := Time.get_ticks_msec()
+  if now < endOfLock or isMoppingFloor:
+    return
+
+  isMoppingFloor = true
+
+  var ableToMove := movePlayerDown()
+
+  if ableToMove:
+    state = State.PLAYING
+  else:
+    eatPlayer()
+    var fullRows := findFullRows(opponent)
+    var fullRowsCount := fullRows.size()
+    if fullRowsCount > 0:
+      removeOpponentFullRows(fullRows)
+      updateScore(fullRowsCount)
+
+    if spawnPlayer():
+      state = State.PLAYING
+      nextFall = now + fallRate
+    else:
+      state = State.GAME_OVER
+
+  isMoppingFloor = false
 
 
 func spawnPlayer() -> bool:
@@ -227,6 +289,42 @@ func eatPlayer() -> void:
     var newSquare := square.copy()
     newSquare.cell += player.cell
     opponent.append(newSquare)
+
+
+func removeOpponentFullRows(fullRows: Array[int]) -> void:
+  var squares: Array[Square] = []
+  for square in opponent:
+    var rowToRemove := false
+    for fullRow in fullRows:
+      if fullRow == square.row:
+        rowToRemove = true
+        break
+    if rowToRemove:
+      continue
+
+    var rowBeforeShifting := square.row
+    for fullRow in fullRows:
+      if fullRow > rowBeforeShifting:
+        square.row += 1
+
+    squares.append(square)
+
+  opponent = squares
+
+
+func findFullRows(squares: Array[Square]) -> Array[int]:
+  var fullRows: Array[int] = []
+  var population: Dictionary[int, int] = { }
+
+  for square in squares:
+    var value: int = population.get(square.row, 0) + 1
+    population.set(square.row, value)
+
+  for row in population.keys():
+    if (population.get(row, 0) >= Config.PUZZLE_WIDTH):
+      fullRows.append(row)
+
+  return fullRows
 
 
 func isLegalShapePosition(shape: Shape) -> bool:
