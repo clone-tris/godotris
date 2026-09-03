@@ -42,10 +42,10 @@ static func makeSquares(type: Type) -> Array[Square]:
   return squares
 
 
-static var rng = RandomNumberGenerator.new()
+static var rng := RandomNumberGenerator.new()
 
 
 static func random() -> Shape:
-  var type := rng.randi_range(0, 6) as Type
+  var type := rng.randi_range(0, Type.size() - 1) as Type
   var squares := makeSquares(type)
   return Shape.new(0, 0, squares)
