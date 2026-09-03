@@ -17,25 +17,11 @@ enum State {
   GAME_OVER,
 }
 
-var player := Shape.new(
-  0,
-  0,
-  [
-    Square.new(0, 0, Colors.TETROMINO_RED),
-    Square.new(0, 1, Colors.TETROMINO_RED),
-    Square.new(1, 1, Colors.TETROMINO_RED),
-    Square.new(1, 2, Colors.TETROMINO_RED),
-  ],
-)
+var player: Shape
 
 var nextPlayer: Shape
 
-var opponent: Array[Square] = [
-  Square.new(19, 4, Colors.TETROMINO_CYAN),
-  Square.new(19, 5, Colors.TETROMINO_GREEN),
-  Square.new(19, 6, Colors.TETROMINO_PURPLE),
-  Square.new(19, 7, Colors.TETROMINO_BLUE),
-]
+var opponent: Array[Square]
 
 var score: Score
 
@@ -52,16 +38,7 @@ var previousState: State
 
 func _init() -> void:
   score = Score.new()
-  nextPlayer = Shape.new(
-    0,
-    0,
-    [
-      Square.new(0, 0, Colors.TETROMINO_RED),
-      Square.new(0, 1, Colors.TETROMINO_RED),
-      Square.new(1, 1, Colors.TETROMINO_RED),
-      Square.new(1, 2, Colors.TETROMINO_RED),
-    ],
-  )
+  nextPlayer = Tetromino.random()
   opponent = []
   isPlayerFalling = false
   nextFall = Time.get_ticks_msec() + Config.INITIAL_FALL_RATE
@@ -72,6 +49,8 @@ func _init() -> void:
   commandQueue = []
   state = State.PLAYING
   previousState = State.PLAYING
+
+  spawnPlayer()
 
 
 func _draw() -> void:
@@ -96,8 +75,21 @@ func _input(event: InputEvent) -> void:
     movePlayerDown()
 
 
-func spawnPlayer() -> void:
-  pass
+func spawnPlayer() -> bool:
+  var foreshadow = nextPlayer.copy()
+  foreshadow.row = 0
+  foreshadow.column = (Config.PUZZLE_WIDTH - foreshadow.width) / 2
+  var overlaps := foreshadow.overlapsSquares(opponent)
+  if (overlaps):
+    foreshadow.row = -1
+    overlaps = foreshadow.overlapsSquares(opponent)
+    if (overlaps):
+      return false
+  player = foreshadow
+
+  nextPlayer = Tetromino.random()
+
+  return true
 
 
 func updateScore(linesRemoved: int) -> void:
