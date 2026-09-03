@@ -46,11 +46,46 @@ func _init() -> void:
   endOfLock = 0
   isMoppingFloor = false
   timeRemainingAfterPaused = 0
-  commandQueue = []
+  clearQueue()
   state = State.PLAYING
   previousState = State.PLAYING
 
   spawnPlayer()
+
+
+func _process(_delta: float) -> void:
+  if state == State.GAME_OVER:
+    clearQueue()
+    # TODO should switch to gameover
+    print("Game is over, should quit now")
+    return
+
+  for command in commandQueue:
+    match command:
+      Command.CLOSE:
+        clearQueue()
+        get_tree().quit()
+        return
+      Command.RESTART:
+        clearQueue()
+        # TODO Restart
+        print("Restart...")
+        return
+      Command.PAUSE:
+        clearQueue()
+        togglePaused()
+        return
+      Command.ROTATE:
+        rotatePlayer()
+      Command.MOVE_LEFT:
+        movePlayerLeft()
+      Command.MOVE_RIGHT:
+        movePlayerRight()
+      Command.MOVE_DOWN:
+        movePlayerDown()
+
+  clearQueue()
+  queue_redraw()
 
 
 func _draw() -> void:
@@ -85,6 +120,10 @@ func _input(event: InputEvent) -> void:
       commandQueue.append(Command.MOVE_RIGHT)
     if event.is_action_pressed("MoveDown", true):
       commandQueue.append(Command.MOVE_DOWN)
+
+
+func applyGravity() -> void:
+  pass
 
 
 func spawnPlayer() -> bool:
@@ -158,7 +197,6 @@ func rotatePlayer() -> void:
   var ableToMove := isLegalShapePosition(foreshadow)
   if (ableToMove):
     player = foreshadow
-    queue_redraw()
 
 
 func movePlayerLeft() -> void:
@@ -180,7 +218,6 @@ func movePlayer(direction: Vector2i) -> bool:
   var ableToMove := isLegalShapePosition(foreshadow)
   if (ableToMove):
     player = foreshadow
-    queue_redraw()
 
   return ableToMove
 
@@ -194,3 +231,7 @@ func eatPlayer() -> void:
 
 func isLegalShapePosition(shape: Shape) -> bool:
   return shape.withinBounds() and not shape.overlapsSquares(opponent)
+
+
+func clearQueue() -> void:
+  commandQueue.clear()
