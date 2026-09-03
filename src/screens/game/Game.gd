@@ -65,14 +65,26 @@ func _draw() -> void:
 
 
 func _input(event: InputEvent) -> void:
-  if event.is_action_pressed("Rotate", true):
-    rotatePlayer()
-  if event.is_action_pressed("MoveLeft", true):
-    movePlayerLeft()
-  if event.is_action_pressed("MoveRight", true):
-    movePlayerRight()
-  if event.is_action_pressed("MoveDown", true):
-    movePlayerDown()
+  if event.is_action_pressed("Quit", true):
+    commandQueue.append(Command.CLOSE)
+  if event.is_action_pressed("Restart", true):
+    commandQueue.append(Command.RESTART)
+
+  var inTheAction := state == State.PLAYING or state == State.ON_FLOOR
+
+  if inTheAction or state == State.PAUSED:
+    if event.is_action_pressed("Pause", true):
+      commandQueue.append(Command.PAUSE)
+
+  if inTheAction:
+    if event.is_action_pressed("Rotate", true):
+      commandQueue.append(Command.ROTATE)
+    if event.is_action_pressed("MoveLeft", true):
+      commandQueue.append(Command.MOVE_LEFT)
+    if event.is_action_pressed("MoveRight", true):
+      commandQueue.append(Command.MOVE_RIGHT)
+    if event.is_action_pressed("MoveDown", true):
+      commandQueue.append(Command.MOVE_DOWN)
 
 
 func spawnPlayer() -> bool:
