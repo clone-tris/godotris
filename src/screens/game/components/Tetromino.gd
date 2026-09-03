@@ -40,3 +40,12 @@ static func makeSquares(type: Type) -> Array[Square]:
     squares.append(Square.new(coords[0], coords[1], shapeColor))
 
   return squares
+
+
+static var rng = RandomNumberGenerator.new()
+
+
+static func random() -> Shape:
+  var type := rng.randi_range(0, 6) as Type
+  var squares := makeSquares(type)
+  return Shape.new(0, 0, squares)
