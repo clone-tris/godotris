@@ -76,9 +76,9 @@ func _input(event: InputEvent) -> void:
 
 
 func spawnPlayer() -> bool:
-  var foreshadow = nextPlayer.copy()
+  var foreshadow := nextPlayer.copy()
   foreshadow.row = 0
-  foreshadow.column = (Config.PUZZLE_WIDTH - foreshadow.width) / 2
+  foreshadow.column = floori((Config.PUZZLE_WIDTH - foreshadow.width) / 2.0)
   var overlaps := foreshadow.overlapsSquares(opponent)
   if (overlaps):
     foreshadow.row = -1
