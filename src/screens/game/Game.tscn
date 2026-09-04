@@ -2,5 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b57v78o6ni17u" path="res://src/screens/game/Game.gd" id="1_kqvf5"]
 
-[node name="Node2D" type="Node2D" unique_id=564434220]
+[node name="Scene" type="Node2D" unique_id=564434220]
+
+[node name="GameScreen" type="Node2D" parent="." unique_id=1010832411]
 script = ExtResource("1_kqvf5")
+
+[node name="OverRoot" type="CanvasLayer" parent="." unique_id=1970971358]
