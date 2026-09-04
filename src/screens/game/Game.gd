@@ -35,6 +35,9 @@ var commandQueue: Array[Command]
 var state: State
 var previousState: State
 
+const OVER_SCENE: PackedScene = preload("res://src/screens/over/Over.tscn")
+@onready var overRoot: CanvasLayer = $"../OverRoot"
+
 
 func _init() -> void:
   score = Score.new()
@@ -56,8 +59,9 @@ func _init() -> void:
 func _process(_delta: float) -> void:
   if state == State.GAME_OVER:
     clearQueue()
-    # TODO should switch to gameover
-    print("Game is over, should quit now")
+    process_mode = Node.PROCESS_MODE_DISABLED
+    var over := OVER_SCENE.instantiate()
+    overRoot.add_child(over)
     return
 
   for command in commandQueue:
