@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dlyhfglnlkpci"]
 
 [ext_resource type="FontFile" uid="uid://ic4h61ynry6m" path="res://jetbrainsmono.ttf" id="1_ctxun"]
-[ext_resource type="Script" uid="uid://1lv0cai01f5x" path="res://src/screens/over/Over.gd" id="1_no75h"]
-[ext_resource type="PackedScene" uid="uid://c5mwi0461phhh" path="res://src/Button.tscn" id="3_qtjk6"]
+[ext_resource type="Script" uid="uid://1lv0cai01f5x" path="res://src/screens/over/over.gd" id="1_no75h"]
+[ext_resource type="PackedScene" uid="uid://c5mwi0461phhh" path="res://src/button.tscn" id="3_qtjk6"]
 
 [node name="OverOverlay" type="Control" unique_id=2115216040]
 layout_mode = 3

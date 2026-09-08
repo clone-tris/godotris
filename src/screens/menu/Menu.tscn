@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://vdco30442sya"]
+
+[ext_resource type="Script" uid="uid://brunlxidn0ryk" path="res://src/screens/menu/menu.gd" id="1_q7mf2"]
+[ext_resource type="PackedScene" uid="uid://c5mwi0461phhh" path="res://src/button.tscn" id="1_vas8p"]
+
+[node name="MenuScene" type="Node2D" unique_id=1790666613]
+script = ExtResource("1_q7mf2")
+
+[node name="startButton" parent="." unique_id=1621654951 instance=ExtResource("1_vas8p")]
+offset_left = 96.0
+offset_top = 408.0
+offset_right = 155.0
+offset_bottom = 432.0
+text = "[S]tart"
+
+[node name="quitButton" parent="." unique_id=1602275844 instance=ExtResource("1_vas8p")]
+offset_left = 216.0
+offset_top = 408.0
+offset_right = 267.0
+offset_bottom = 432.0
+text = "[Q]uit"
+
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
