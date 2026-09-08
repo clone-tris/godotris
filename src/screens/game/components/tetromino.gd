@@ -21,13 +21,13 @@ const GRIDS: Array[Array] = [
 ]
 
 const COLORS: Array[Color] = [
-  Colors.TETROMINO_CYAN,
-  Colors.TETROMINO_YELLOW,
-  Colors.TETROMINO_PURPLE,
-  Colors.TETROMINO_BLUE,
-  Colors.TETROMINO_ORANGE,
-  Colors.TETROMINO_GREEN,
-  Colors.TETROMINO_RED,
+  Colors.TETROMINO_CYAN, # I
+  Colors.TETROMINO_YELLOW, # O
+  Colors.TETROMINO_PURPLE, # T
+  Colors.TETROMINO_BLUE, # J
+  Colors.TETROMINO_ORANGE, # L
+  Colors.TETROMINO_GREEN, # S
+  Colors.TETROMINO_RED, # Z
 ]
 
 
