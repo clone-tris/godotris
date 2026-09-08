@@ -145,7 +145,8 @@ func _draw() -> void:
 
 func _input(event: InputEvent) -> void:
   if event.is_action_pressed("Quit", true):
-    commandQueue.append(Command.CLOSE)
+    state = State.GAME_OVER
+    # commandQueue.append(Command.CLOSE)
   if event.is_action_pressed("Restart", true):
     commandQueue.append(Command.RESTART)
 

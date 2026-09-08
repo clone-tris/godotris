@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://c5mwi0461phhh"]
+
+[ext_resource type="StyleBox" uid="uid://c7ehrvc6hpusj" path="res://button.tres" id="1_5qq1x"]
+[ext_resource type="FontFile" uid="uid://ic4h61ynry6m" path="res://jetbrainsmono.ttf" id="1_ds3pt"]
+
+[node name="Button" type="Button" unique_id=1621654951]
+offset_right = 8.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.12941177, 0.12941177, 0.12941177, 1)
+theme_override_fonts/font = ExtResource("1_ds3pt")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = ExtResource("1_5qq1x")
