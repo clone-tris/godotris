@@ -37,7 +37,7 @@ theme_override_fonts/font = ExtResource("1_ctxun")
 theme_override_font_sizes/font_size = 34
 text = "Game Over!"
 
-[node name="Button4" parent="." unique_id=1621654951 instance=ExtResource("3_qtjk6")]
+[node name="retryButton" parent="." unique_id=1621654951 instance=ExtResource("3_qtjk6")]
 layout_mode = 0
 offset_left = 72.0
 offset_top = 408.0
@@ -45,7 +45,7 @@ offset_right = 137.0
 offset_bottom = 432.0
 text = "[R]etry"
 
-[node name="Button" parent="." unique_id=398428924 instance=ExtResource("3_qtjk6")]
+[node name="menuButton" parent="." unique_id=398428924 instance=ExtResource("3_qtjk6")]
 layout_mode = 0
 offset_left = 168.0
 offset_top = 408.0
@@ -53,7 +53,7 @@ offset_right = 225.0
 offset_bottom = 432.0
 text = "[M]enu"
 
-[node name="Button2" parent="." unique_id=1618420792 instance=ExtResource("3_qtjk6")]
+[node name="quitButton" parent="." unique_id=1618420792 instance=ExtResource("3_qtjk6")]
 layout_mode = 0
 offset_left = 264.0
 offset_top = 408.0
