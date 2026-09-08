@@ -12,6 +12,7 @@ const CANVAS_WIDTH = SIDEBAR_WIDTH + WAR_ZONE_WIDTH
 const CANVAS_HEIGHT = PUZZLE_HEIGHT * SQUARE_WIDTH
 
 const FONT_SIZE_SMALL = 14
+# unused, since we're drawing popup directly in editor
 const FONT_SIZE_LARGE = 34
 
 const INITIAL_FALL_RATE = 1000
@@ -19,4 +20,5 @@ const FLOOR_LOCK_RATE = 500
 const FALL_RATE_REDUCTION_FACTOR = 3
 const LINES_PER_LEVEL = 10
 
+# unused, since we're drawing button directly in editor
 const BUTTON_PADDING_LEFT = 4
