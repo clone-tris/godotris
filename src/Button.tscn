@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://c5mwi0461phhh"]
 
-[ext_resource type="StyleBox" uid="uid://c7ehrvc6hpusj" path="res://button.tres" id="1_5qq1x"]
+[ext_resource type="StyleBox" uid="uid://c7ehrvc6hpusj" path="res://src/button.tres" id="1_5qq1x"]
 [ext_resource type="FontFile" uid="uid://ic4h61ynry6m" path="res://jetbrainsmono.ttf" id="1_ds3pt"]
+[ext_resource type="StyleBox" uid="uid://dintyxs2sqqrs" path="res://src/button_press.tres" id="3_v3up1"]
+[ext_resource type="StyleBox" uid="uid://ck1jrijolhm7i" path="res://src/button_hover.tres" id="3_ytphv"]
 
 [node name="Button" type="Button" unique_id=1621654951]
 offset_right = 8.0
@@ -10,3 +12,5 @@ theme_override_colors/font_color = Color(0.12941177, 0.12941177, 0.12941177, 1)
 theme_override_fonts/font = ExtResource("1_ds3pt")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = ExtResource("1_5qq1x")
+theme_override_styles/pressed = ExtResource("3_v3up1")
+theme_override_styles/hover = ExtResource("3_ytphv")
