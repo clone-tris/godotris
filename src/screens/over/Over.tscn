@@ -64,3 +64,5 @@ offset_bottom = 432.0
 text = "[Q]uit"
 
 [connection signal="pressed" from="retryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="menuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="quitButton" to="." method="_on_quit_button_pressed"]
