@@ -12,9 +12,11 @@ static func drawPlayfield(canvas: CanvasItem, player: Shape, opponent: Array[Squ
   Painter.drawSquares(canvas, opponent, playfieldOrigin)
 
 
-
 static func drawSidebar(canvas: CanvasItem, nextPlayer: Shape, score: Score) -> void:
-  canvas.draw_rect(Rect2(0, 0, Config.SIDEBAR_WIDTH, Config.CANVAS_HEIGHT), Colors.UI_SIDEBAR_BACKGROUND)
+  canvas.draw_rect(
+    Rect2(0, 0, Config.SIDEBAR_WIDTH, Config.CANVAS_HEIGHT),
+    Colors.UI_SIDEBAR_BACKGROUND,
+  )
 
   const nextPlayerOrigin := Vector2i(Config.SQUARE_WIDTH, Config.SQUARE_WIDTH)
   Painter.drawGuide(

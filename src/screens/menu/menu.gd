@@ -46,9 +46,11 @@ static var GRAPHIC: Array[Square] = [
   Square.new(14, 13, Tetromino.COLORS[0]),
 ]
 
+
 func _draw() -> void:
   Painter.drawGuide(self, Rect2(0, 0, Config.CANVAS_WIDTH, Config.CANVAS_HEIGHT))
   Painter.drawSquares(self, GRAPHIC, Vector2i.ZERO)
+
 
 func _on_start_button_pressed() -> void:
   get_tree().change_scene_to_file("res://src/screens/game/Game.tscn")
@@ -56,6 +58,7 @@ func _on_start_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
   get_tree().quit()
+
 
 func _input(event: InputEvent) -> void:
   if event.is_action_pressed("Quit", true):
